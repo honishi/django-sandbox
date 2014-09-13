@@ -9,7 +9,7 @@ pip install --allow-external mysql-connector-python mysql-connector-python
 # pip freeze > requirements.txt
 pip install --allow-external mysql-connector-python -r requirements.txt
 ````
-`mysql-python`(MySQLdb) can not be used with 3, so use `mysql-connector-python`.
+`mysql-python`(MySQLdb) can not be used with python 3, so use `mysql-connector-python`.
 
 package setup
 --
@@ -87,7 +87,9 @@ python manage.py createsuperuser
 open 'http://localhost:8000/admin'
 ````
 
-note: mysql
+note
+==
+brew mysql installation note
 --
 ````
 A "/etc/my.cnf" from another install may interfere with a Homebrew-built
@@ -103,4 +105,29 @@ Then to load mysql now:
 Or, if you don't want/need launchctl, you can just run:
     mysql.server start
 ````
+
+open project w/ intellij
+--
+* `open project`
+* `project structure` in `files`
+    * in `platform settings`
+        * set virtualenv environment to `sdks` 
+    * in `modules` at `project settings`
+        * add django module like `hellosite/hellosite` as `Django`'s one
+            * project name; `hellosite`
+            * application name; `hellosite`
+            * templates folder; `/path/to/hellosite`
+            * module name; `hellosite`
+            * content root; `/path/to/hellosite`
+            * module file location; `/path/to/hellosite/hellosite`
+        * configure the module like below
+            * django project root; `/path/to/hellosite/`
+            * settings; `hellosite/settings.py`
+            * manage script; `manage.py`
+        * set module located top of list like `django-sandbox`'s dependency to project virtual env
+* `edit configurations` in `run`
+    * remove `make` command in `before launch`
+* check commands in `tools`
+    * `run django console`
+    * `run manage tasks`
 
